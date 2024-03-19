@@ -15,7 +15,7 @@
     request.setCharacterEncoding("utf-8");//전송되어오는 데이터가 깨지지 않도록 처리
 
     //클라이언트가 multipart/form-data 형식으로 데이터를 전송할 경우 , 더이상 문자열로
-    //취급해서는 안됌!!! 따라서 아래와 같은 reqest.getParameter("") 문자열을 취급하는 
+    //취급해서는 안됌!!! 따라서 아래와 같은 request.getParameter("") 문자열을 취급하는 
     //메서드 이므로, 복합된 데이터형식인 업로드 처리를 할수 없다..
     //결론: 업로드 컴포넌트를 이용해야 한다
     //String title = request.getParameter("title"); //html에서 전송한 변수 즉 파라미터명을 기재

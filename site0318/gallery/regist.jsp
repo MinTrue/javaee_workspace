@@ -34,19 +34,19 @@
     List<FileItem> itemList=upload.parseRequest(request); 
 
     //각 아이템에 담겨진 데이터를 끄집어 내자 
-    String title= null;
-    String writer= null;
-    String content= null;
-    String filename = null;
+    String title=null;
+    String writer=null;
+    String content=null;
+    String filename=null;
 
     for( FileItem item : itemList){
         if(item.isFormField()){ //텍스트 박스라면...
             out.print(item.getFieldName()+"의 값은"+item.getString("utf-8")+"<br>"); //text 박스의 값을 추출하는 메서드..
-            if(item.getFieldName().equals("title")){// 넘겨받은 컴포넌트가 제목일때
+            if(item.getFieldName().equals("title")){ //넘겨받은 컴포넌트가 제목일때...
                 title = item.getString("utf-8");
-            } else if(item.getFieldName().equals("writer")){ // 넘겨받은 컴포넌트가 작성자일떄
+            }else if(item.getFieldName().equals("writer")){//넘겨받은 컴포넌트가 작성자일때...
                 writer = item.getString("utf-8");
-            } else if(item.getFieldName().equals("content")){ // 넘겹다은 컴포넌트가 내용일떄
+            }else if(item.getFieldName().equals("content")){//넘겨받은 컴포넌트가 내용일때...
                 content = item.getString("utf-8");
             }
         }else{
@@ -55,54 +55,53 @@
             long time = System.currentTimeMillis();
             String ext = item.getName().substring(item.getName().lastIndexOf(".")+1 , item.getName().length());
 
-            filename=time+"."+ext; //새롭게 파일명 만듬
-            item.write(new File(savePath+"/"+filename)); //서버의 하드에 저장
-
-        }
+            filename=time+"."+ext; //새롭게  파일명 만듦
+            item.write(new File(savePath+"/"+filename)); //서버의 하드에 저장!!
+        }        
     }
 
-    //오라클 연동
-    Class.forName("oracle.jdbc.driver.OracleDriver"); //드라이버 로드
+    //오라클 연동 
+    Class.forName("oracle.jdbc.driver.OracleDriver"); //드라이버 로드 
     out.print("드라이버 로드 <br>");
 
     String url="jdbc:oracle:thin:@localhost:1521:XE";
     String user="seshop";
     String pass="1234";
 
-    Connection con = null;
+    Connection con=null;
     PreparedStatement pstmt=null;
 
     con = DriverManager.getConnection(url, user, pass);
-    if(con!=null){
+
+    if(con !=null){
         out.print("접속 성공<br>");
 
-        String sql = "insert into gallery(gallery_idx, title , writer, content, filename)";
-        sql+=" values(seq_gallery.nextval, ?, ?, ?, ?)";
+        String sql="insert into gallery(gallery_idx, title , writer, content, filename)";
+        sql+=" values(seq_gallery.nextval, ?,?,?,? )";
 
-        //쿼리문 준비객체 생성
-        pstmt = con.prepareStatement(sql); //쿼리문 준비객체 생성
-
-        //쿼리문 수행전 반드시 바인드 변수값이 할당되어야 한다.
+        pstmt = con.prepareStatement(sql);//쿼리문 준비객체 생성 
+        
+        //쿼리문 수행전 반드시 바인드 변수값이 할당되어야 한다 
         pstmt.setString(1, title);
         pstmt.setString(2, writer);
         pstmt.setString(3, content);
         pstmt.setString(4, filename);
 
-        //쿼리 수행 후, 영향 받은 레코드 수 받기
-        int result = pstmt.executeUpdate(); // DML
+        //쿼리 수행 후, 영향 받은 레코드 수 받기 
+        int result = pstmt.executeUpdate();//DML
+        
         if(result>0){
             out.print("<script>");
             out.print("alert('등록성공');");
-            out.print("location.href='/gallery/list.jsp';"); //리스트 요청
+            out.print("location.href='/gallery/list.jsp';"); //리스트 요청 
             out.print("</script>");
-        } else{
+        }else{
             out.print("<script>");
             out.print("alert('등록실패');");
-            out.print("history.back();"); //이전 페이지
+            out.print("history.back();"); //이전 페이지 보여주기 
             out.print("</script>");
         }
     }
-
     if(pstmt!=null)pstmt.close();
     if(con!=null)con.close();
 %>
