@@ -132,8 +132,7 @@ input[type=button]:hover {
 	}
 }
 </style>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript">
 	//입력한 아이디와 패스워드를 서버로 전송
 	function loginCheck() {
