@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	 XML 은 HTML과 형제 지간이다.
+	-XML : 데이터를 어떻게 구성할지에 대한 문서이다. 즉 텍스트 기반의 DB
+			   태그가 정해져 있는 것이 아니라, 사용자 즉 개발자가 태그를 정의한다.
+			   사용자 정의 태그라 한다.
+			   
+	-HTML : 표현을 어떻게 할지에 대한 문서이다. 즉 디자인과 관련성이 높다.
+	
+	{  JSON 으로 표현
+		"members" : [
+			{
+				"empno" : 5432,
+				"ename" : scott,
+				"sal" : 2500
+			},
+			{
+				"empno" : 2900,
+				"ename" : adams,
+				"sal" : 3400
+			},
+			{
+				"empno" : 0000,
+				"ename" : king,
+				"sal" : 5000
+			},		
+		 ]
+	}
+ -->
+ <members>
+ 
+ 	<member>
+ 		<empno>5432</empno>
+ 		<ename>scott</ename>
+ 		<sal>2500</sal>
+ 	</member>
+ 	
+ 	<member>
+ 		<empno>2900</empno>
+ 		<ename>adams</ename>
+ 		<sal>3400</sal>
+ 	</member>
+ 	
+ 	<member>
+ 		<empno>0000</empno>
+ 		<ename>king</ename>
+ 		<sal>5000</sal>
+ 	</member>
+ 
+ </members>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
