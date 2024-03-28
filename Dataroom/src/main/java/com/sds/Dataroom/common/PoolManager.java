@@ -1,4 +1,4 @@
-package com.sds.asynboard.common;
+package com.sds.Dataroom.common;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
